@@ -1,4 +1,7 @@
 
+
+using FlcVilla_API.Logging;
+
 namespace FlcVilla_API
 {
     public class Program
@@ -9,11 +12,14 @@ namespace FlcVilla_API
 
             // Add services to the container.
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers(option =>
+            {
+                //option.ReturnHttpNotAcceptable=true;
+            }).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddSingleton<ILogging, MyLoggingV2>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
