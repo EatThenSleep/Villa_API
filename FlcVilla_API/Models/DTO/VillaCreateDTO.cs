@@ -2,9 +2,8 @@
 
 namespace FlcVilla_API.Models.DTO
 {
-    public class VillaDTO
+    public class VillaCreateDTO
     {
-        public int Id { get; set; }
         [Required(ErrorMessage = "Bỏ trống cái lồn má mày à")]
         [MaxLength(30, ErrorMessage = "Địt mẹ mày nhập ít thôi! (tầm 30 thôi)")]
         public string Name { get; set; } = string.Empty;

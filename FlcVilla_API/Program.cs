@@ -1,6 +1,8 @@
 
 
-using FlcVilla_API.Logging;
+
+using FlcVilla_API.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlcVilla_API
 {
@@ -11,6 +13,13 @@ namespace FlcVilla_API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ApplicationDbContext>(option =>
+            {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
+            });
+
+            // add AutoMapper Service
+            builder.Services.AddAutoMapper(typeof(MappingConfig));
 
             builder.Services.AddControllers(option =>
             {
@@ -19,7 +28,6 @@ namespace FlcVilla_API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton<ILogging, MyLoggingV2>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
