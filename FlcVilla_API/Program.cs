@@ -2,6 +2,8 @@
 
 
 using FlcVilla_API.Data;
+using FlcVilla_API.Repository;
+using FlcVilla_API.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlcVilla_API
@@ -17,6 +19,10 @@ namespace FlcVilla_API
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
+
+            // add Repository Instance
+            builder.Services.AddScoped<IVillaRepository, VillaRepository>();
+            builder.Services.AddScoped<IVillaNumberRepository, VillaNumberRepository>();
 
             // add AutoMapper Service
             builder.Services.AddAutoMapper(typeof(MappingConfig));
