@@ -2,9 +2,11 @@
 
 
 using FlcVilla_API.Data;
+using FlcVilla_API.Models;
 using FlcVilla_API.Repository;
 using FlcVilla_API.Repository.IRepository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -26,6 +28,10 @@ namespace FlcVilla_API
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultSQLConnection"));
             });
+
+            // add identity service
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // add caching for response
             builder.Services.AddResponseCaching();
