@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlcVilla_API", "FlcVilla_API\FlcVilla_API.csproj", "{B62DF588-E82C-4F3D-A361-7F1BBD83A838}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlcVilla_API", "FlcVilla_API\FlcVilla_API.csproj", "{B62DF588-E82C-4F3D-A361-7F1BBD83A838}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FLC_Web", "FLC_Web\FLC_Web.csproj", "{8D85CF96-0022-47B6-B06F-71F9A1A4671C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLC_Utility", "FLC_Utility\FLC_Utility.csproj", "{CFAF8E9E-BD6E-400B-A4A4-C2E9C9BBAF59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B62DF588-E82C-4F3D-A361-7F1BBD83A838}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B62DF588-E82C-4F3D-A361-7F1BBD83A838}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B62DF588-E82C-4F3D-A361-7F1BBD83A838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D85CF96-0022-47B6-B06F-71F9A1A4671C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D85CF96-0022-47B6-B06F-71F9A1A4671C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D85CF96-0022-47B6-B06F-71F9A1A4671C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D85CF96-0022-47B6-B06F-71F9A1A4671C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFAF8E9E-BD6E-400B-A4A4-C2E9C9BBAF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFAF8E9E-BD6E-400B-A4A4-C2E9C9BBAF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFAF8E9E-BD6E-400B-A4A4-C2E9C9BBAF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFAF8E9E-BD6E-400B-A4A4-C2E9C9BBAF59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

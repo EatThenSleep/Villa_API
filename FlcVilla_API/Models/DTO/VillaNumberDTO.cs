@@ -10,5 +10,6 @@ namespace FlcVilla_API.Models.DTO
         [Required]
         public int VillaId { get; set; }
         public string SpecialDetails { get; set; } = string.Empty;
+        public VillaDTO Villa { get; set; }
     }
 }
