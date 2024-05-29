@@ -8,5 +8,6 @@ namespace FLC_Web.Models
         public string Url { get; set; } = string.Empty;
         public object Data { get; set; }
         public string Token { get; set; }
+        public ContentType ContentType { get; set; } = ContentType.Json;
     }
 }

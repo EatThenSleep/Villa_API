@@ -22,8 +22,9 @@ namespace FLC_Web.Services
             {
                 ApiType = SD.ApiType.POST,
                 Data = dto,
-                Url = villaUrl + "/api/v1/VillaAPI",
-                Token = token
+                Url = villaUrl + $"/api/{SD.CurrentAPIVersion}/VillaAPI",
+                Token = token,
+                ContentType = SD.ContentType.MultipartFormData
             });
         }
 
@@ -32,7 +33,7 @@ namespace FLC_Web.Services
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.ApiType.DELETE,
-                Url = villaUrl + $"/api/v1/VillaAPI/{id}",
+                Url = villaUrl + $"/api/{SD.CurrentAPIVersion}/VillaAPI/{id}",
                 Token = token
             });
         }
@@ -42,7 +43,7 @@ namespace FLC_Web.Services
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.ApiType.GET,
-                Url = villaUrl + "/api/v1/VillaAPI",
+                Url = villaUrl + $"/api/{SD.CurrentAPIVersion}/VillaAPI",
                 Token = token
             });
         }
@@ -52,7 +53,7 @@ namespace FLC_Web.Services
             return SendAsync<T>(new APIRequest()
             {
                 ApiType = SD.ApiType.GET,
-                Url = villaUrl + $"/api/v1/VillaAPI/{id}",
+                Url = villaUrl + $"/api/{SD.CurrentAPIVersion}/VillaAPI/{id}",
                 Token = token
             });
         }
@@ -63,8 +64,9 @@ namespace FLC_Web.Services
             {
                 ApiType = SD.ApiType.PUT,
                 Data = dto,
-                Url = villaUrl + $"/api/v1/VillaAPI/{dto.Id}",
-                Token = token
+                Url = villaUrl + $"/api/{SD.CurrentAPIVersion}/VillaAPI/{dto.Id}",
+                Token = token,
+                ContentType = SD.ContentType.MultipartFormData
             });
         }
     }

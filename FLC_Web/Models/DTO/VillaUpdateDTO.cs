@@ -16,8 +16,9 @@ namespace FLC_Web.Models.DTO
         public int Occupancy { get; set; }
         [Required]
         public int Sqft { get; set; }
-        [Required]
         public string ImageUrl { get; set; } = string.Empty;
+        public string ImageLocalPath { get; set; } = string.Empty;
+        public IFormFile? Image { get; set; }
         public string Amenity { get; set; } = string.Empty;
     }
 }

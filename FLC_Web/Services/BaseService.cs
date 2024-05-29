@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json.Serialization;
+using static FLC_Utility.SD;
 
 namespace FLC_Web.Services
 {
@@ -28,15 +29,49 @@ namespace FLC_Web.Services
                 // 1. Process Request
                 var client = _httpClient.CreateClient("FlcAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Headers.Add("Accept", "application/json");
+                if(apiRequest.ContentType == ContentType.MultipartFormData)
+                {
+                    message.Headers.Add("Accept", "*/*");
+                }
+                else
+                {
+                    message.Headers.Add("Accept", "application/json");
+                }
+
                 message.RequestUri = new Uri(apiRequest.Url);
 
-                // Data will not be null in POST/PUT Http calls
-                if (apiRequest.Data != null)
+                if(apiRequest.ContentType == ContentType.MultipartFormData)
                 {
-                    message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data),
-                                        Encoding.UTF8, "application/json");
+                    var content = new MultipartFormDataContent();
+
+                    foreach(var prop in apiRequest.Data.GetType().GetProperties())
+                    {
+                        var value = prop.GetValue(apiRequest.Data);
+                        if(value is FormFile)
+                        {
+                            var file = (FormFile)value;
+                            if(file != null)
+                            {
+                                content.Add(new StreamContent(file.OpenReadStream()), prop.Name, file.FileName);
+                            }
+                        }
+                        else
+                        {
+                            content.Add(new StringContent(value == null ? "" : value.ToString()), prop.Name);
+                        }
+                    }
+                    message.Content = content;
                 }
+                else
+                {
+                    // Data will not be null in POST/PUT Http calls
+                    if (apiRequest.Data != null)
+                    {
+                        message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data),
+                                            Encoding.UTF8, "application/json");
+                    }
+                }
+               
 
                 switch (apiRequest.ApiType)
                 {
